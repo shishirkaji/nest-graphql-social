@@ -16,6 +16,7 @@ import {
       },
     }),
   ],
+
   providers: [UsersResolver, UsersService],
 })
 export class UsersModule {}

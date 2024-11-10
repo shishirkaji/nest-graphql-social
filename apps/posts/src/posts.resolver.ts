@@ -19,17 +19,17 @@ export class PostsResolver {
   }
 
   @Query(() => Post, { name: 'post' })
-  findOne(@Args('id', { type: () => Int }) id: number) {
+  findOne(@Args('id') id: string) {
     return this.postsService.findOne(id);
   }
 
-  @Mutation(() => Post)
-  updatePost(@Args('updatePostInput') updatePostInput: UpdatePostInput) {
-    return this.postsService.update(updatePostInput.id, updatePostInput);
-  }
+  // @Mutation(() => Post)
+  // updatePost(@Args('updatePostInput') updatePostInput: UpdatePostInput) {
+  //   return this.postsService.update(updatePostInput.id, updatePostInput);
+  // }
 
-  @Mutation(() => Post)
-  removePost(@Args('id', { type: () => Int }) id: number) {
-    return this.postsService.remove(id);
-  }
+  // @Mutation(() => Post)
+  // removePost(@Args('id', { type: () => Int }) id: number) {
+  //   return this.postsService.remove(id);
+  // }
 }

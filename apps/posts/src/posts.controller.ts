@@ -7,6 +7,6 @@ export class PostsController {
 
   @Get()
   getHello(): string {
-    return this.postsService.getHello();
+    return '';
   }
 }
