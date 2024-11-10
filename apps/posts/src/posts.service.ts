@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreatePostInput } from './dto/create-post.input';
 import { UpdatePostInput } from './dto/update-post.input';
 import { Post } from './entities/post.entity';
+import { User } from './entities/user.entity';
 
 @Injectable()
 export class PostsService {
@@ -13,8 +14,10 @@ export class PostsService {
     return createPostInput;
   }
 
-  findAll() {
-    return this.posts;
+  findAll(user: User) {
+    const thisPosts = this.posts.filter((post) => post.authorId == user.id);
+    console.log('posts', { thisPosts, user, posts: this.posts });
+    return thisPosts;
   }
 
   findOne(id: string) {
@@ -28,7 +31,9 @@ export class PostsService {
       ...updatePostInput,
     };
   }
-
+  forAuthor(authorId: string) {
+    return this.posts.filter((post) => post.authorId === authorId);
+  }
   // remove(id: number) {
   //   return `This action removes a #${id} post`;
   // }
